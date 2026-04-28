@@ -4,7 +4,7 @@ let dislikeCount = 0;
 let curtido = false;
 let descurtido = false;
 
-
+//== SERVIÇO
 function curtir() {
   if (curtido == false){
     likeCount++;
@@ -46,7 +46,17 @@ function descurtir() {
   }
 }
 
+//=== CONTOLER (intermediação evento/regras de negócio)
+
+function clicarCurtir(){
+   curtir();
+}
 
 
-document.getElementById("likeBtn").addEventListener("click", curtir);
-document.getElementById("dislikeBtn").addEventListener("click", descurtir);
+function clicarDescurtir(){
+   descurtir();
+}
+
+//=== EVENTOS ===
+document.getElementById("likeBtn").addEventListener("click", clicarCurtir);
+document.getElementById("dislikeBtn").addEventListener("click", clicarDescurtir);
