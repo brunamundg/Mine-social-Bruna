@@ -1,26 +1,25 @@
-//= ESTADO (dados da aplicação)===
+// === ESTADO (dados da aplicação) === 
 let likeCount = 0;
 let dislikeCount = 0;
 let curtido = false;
 let descurtido = false;
 
-//== SERVIÇO
+// === SERVICE (regras de negócio)
 function curtir() {
   if (curtido == false){
     likeCount++;
     curtido = true;
-   
+    
+
     if(descurtido == true){
       dislikeCount--;
       descurtido = false;
-      
-
     }
 
   }else{
     likeCount--;
     curtido = false;
-      }
+  }
 
 }
 
@@ -33,41 +32,38 @@ function descurtir() {
     if(curtido == true){
       likeCount--;
       curtido = false;
-      
     }
 
   }
   else{
     dislikeCount--;
     descurtido = false;
-  
   }
 }
 
-//=== VIEWS  (interface)
+//=== VIEWS (interface)===
 
-function atualizarInterface(){
-   document.getElementById("likeCount").innerText = likeCount;
-   document.getElementById("dislikeCount").innerText = dislikeCount;
-  
+function atualizarTela(){
+  document.getElementById("likeCount").innerText = likeCount;
+  document.getElementById("dislikeCount").innerText = dislikeCount;
 }
 
-//=== CONTOLER (intermediação evento/regras de negócio)
+//=== CONTROLLER (intermediação evento/regras de negócio)
 
 function clicarCurtir(){
-   curtir();
-   atualizartela();
+  curtir();
+  atualizarTela();
 }
-
 function clicarDescurtir(){
-   descurtir();
-   atualizartela();
+  descurtir();
+  atualizarTela();
 }
 
-//=== EVENTOS ===
+
+// === EVENTOS ====
 document.getElementById("likeBtn").addEventListener("click", clicarCurtir);
 document.getElementById("dislikeBtn").addEventListener("click", clicarDescurtir);
 
-//=== INICIALIZAÇãO DE TELA ===
+// === INICIALIZAÇÃO DE TELA ===
 
 atualizarTela();
