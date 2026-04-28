@@ -1,64 +1,52 @@
+//= ESTADO (dados da aplicação)===
 let likeCount = 0;
-let curtido = false; // flag booleana
+let dislikeCount = 0;
+let curtido = false;
+let descurtido = false;
+
 
 function curtir() {
-
- if(curtido == false){
+  if (curtido == false){
     likeCount++;
     curtido = true;
     document.getElementById("likeCount").innerText = likeCount;
- }else{
+
+    if(descurtido == true){
+      dislikeCount--;
+      descurtido = false;
+      document.getElementById("dislikeCount").innerText = dislikeCount;
+
+    }
+
+  }else{
     likeCount--;
     curtido = false;
     document.getElementById("likeCount").innerText = likeCount;
- }
+  }
 
-  
-}
-
-documet.getElementById("likeBtn").addEventListener("click", curtir);
-
-let likeCount = 0;
-let curtido = false;
-
-let dislikeCount = 0;
-let descurtido = false;
-
-function curtir() {
-if (curtido == false) { 
- if (descurtido == true) {
- descurtido = false;
- dislikeCount--;
- }
-likeCount++;
- curtido = true;
- } else {
- 
- likeCount--;
- curtido = false;
- }
- atualizarInterface();
 }
 
 function descurtir() {
- if (descurtido == false) { 
- if (curtido == true) {
- curtido = false;
-likeCount--;
- }
- dislikeCount++;
- descurtido = true;
- } else {
-dislikeCount--;
-descurtido = false;
- }
- atualizarInterface();
+  if(descurtido == false){
+    dislikeCount++;
+    descurtido = true;
+    document.getElementById("dislikeCount").innerText = dislikeCount;
+
+    if(curtido == true){
+      likeCount--;
+      curtido = false;
+      document.getElementById("likeCount").innerText = likeCount;
+    }
+
+  }
+  else{
+    dislikeCount--;
+    descurtido = false;
+    document.getElementById("dislikeCount").innerText = dislikeCount;
+  }
 }
 
-function atualizarInterface() {
-document.getElementById("likeCount").innerText = likeCount;
- document.getElementById("dislikeCount").innerText = dislikeCount;
-}
+
 
 document.getElementById("likeBtn").addEventListener("click", curtir);
 document.getElementById("dislikeBtn").addEventListener("click", descurtir);
