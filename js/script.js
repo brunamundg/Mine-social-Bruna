@@ -52,7 +52,6 @@ function clicarCurtir(){
    curtir();
 }
 
-
 function clicarDescurtir(){
    descurtir();
 }
